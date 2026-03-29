@@ -12,7 +12,7 @@ const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const DOC_IDS = {
   familyInfo: '1H5xT8z4fymzDEGQIqn1cvw65W9RG8iJasKdSZ_Y13mM',
   calendar:   '1H5xT8z4fymzDEGQIqn1cvw65W9RG8iJasKdSZ_Y13mM',
-  medical:    'paste-doc-id-here',
+  medical:    '1H5xT8z4fymzDEGQIqn1cvw65W9RG8iJasKdSZ_Y13mM',
 };
 // ─────────────────────────────────────────────────────────────────────
 
@@ -58,7 +58,7 @@ ${medical}
 
     console.log('Family context refreshed from Google Docs');
   } catch (err) {
-    console.error('Failed to refresh context:', err.message);
+    console.error('Failed to refresh context:', err.message, err.code, err.status);
   }
 }
 

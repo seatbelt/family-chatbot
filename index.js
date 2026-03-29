@@ -10,8 +10,8 @@ const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 // ─── YOUR DOC IDS ────────────────────────────────────────────────────
 const DOC_IDS = {
-  familyInfo: 'https://docs.google.com/document/d/1H5xT8z4fymzDEGQIqn1cvw65W9RG8iJasKdSZ_Y13mM/edit?usp=sharing',
-  calendar:   'https://docs.google.com/document/d/1H5xT8z4fymzDEGQIqn1cvw65W9RG8iJasKdSZ_Y13mM/edit?usp=sharing',
+  familyInfo: '1H5xT8z4fymzDEGQIqn1cvw65W9RG8iJasKdSZ_Y13mM/edit?usp=sharing',
+  calendar:   '1H5xT8z4fymzDEGQIqn1cvw65W9RG8iJasKdSZ_Y13mM/edit?usp=sharing',
   medical:    'paste-doc-id-here',
 };
 // ─────────────────────────────────────────────────────────────────────

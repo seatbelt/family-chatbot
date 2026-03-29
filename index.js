@@ -41,10 +41,15 @@ async function refreshContext() {
       getDocText(DOC_IDS.medical, authClient),
     ]);
 
-    FAMILY_CONTEXT = `
+const today = new Date().toLocaleDateString('en-US', { 
+  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
+});
+
+FAMILY_CONTEXT = `
 You are a warm, patient assistant for a family member.
+Today's date is ${today}.
 Always be friendly and concise — this is via text message so keep replies short.
-If he seems confused or needs help, remind him he can call Julie at her number.
+If he seems confused or needs help, remind him he can call Julie or Astrid at their numbers.
 
 You have two jobs:
 1. When questions relate to family, schedules, contacts or anything in the info below — use that information to answer.

@@ -24,7 +24,15 @@ async function getDocText(docId, authClient) {
     .join('')
     .trim();
 }
-
+async function getWeather(location) {
+  try {
+    const response = await fetch(`https://wttr.in/${encodeURIComponent(location)}?format=3`);
+    const text = await response.text();
+    return text.trim();
+  } catch (err) {
+    return 'Weather unavailable right now';
+  }
+}
 let FAMILY_CONTEXT = 'Loading family information...';
 
 async function refreshContext() {
@@ -35,12 +43,11 @@ async function refreshContext() {
     });
     const authClient = await auth.getClient();
 
-    const [familyInfo, calendar, medical] = await Promise.all([
-      getDocText(DOC_IDS.familyInfo, authClient),
-      getDocText(DOC_IDS.calendar, authClient),
-      getDocText(DOC_IDS.medical, authClient),
-    ]);
-
+    const [familyInfo, calendar, weather] = await Promise.all([
+  getDocText(DOC_IDS.familyInfo, authClient),
+  getDocText(DOC_IDS.calendar, authClient),
+  getWeather('New York City'),
+]);
 const today = new Date().toLocaleDateString('en-US', { 
   weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
 });
@@ -63,6 +70,9 @@ ${familyInfo}
 
 UPCOMING CALENDAR:
 ${calendar}
+
+CURRENT WEATHER:
+${weather}
 
 MEDICAL INFORMATION:
 ${medical}
